@@ -1,26 +1,35 @@
 import os
-import sys
-import json
+# import sys
+# import json
 
-CONFIG_PATH = os.path.join(os.path.dirname(__file__), "config.json")
-
-
-if not os.path.exists(CONFIG_PATH):
-    print(f'{CONFIG_PATH} not found')
-    sys.exit(1)
+# CONFIG_PATH = os.path.join(os.path.dirname(__file__), "config.json")
 
 
-configdata = json.load(open(CONFIG_PATH, 'r'))
+# if not os.path.exists(CONFIG_PATH):
+#     print(f'{CONFIG_PATH} not found')
+#     sys.exit(1)
 
-ALLOWED_USER_NAMES = configdata['ALLOWED_USER_NAMES']
-OPENAI_API_KEY = configdata.get('OPENAI_API_KEY', None)
 
-TELEGRAM_TOKEN = configdata['TELEGRAM_TOKEN']
+# configdata = json.load(open(CONFIG_PATH, 'r'))
+# {
+#     "ALLOWED_USER_NAMES": ["some_username"],
+#     "OPENAI_API_KEY": "****",
+#     "TELEGRAM_TOKEN": "****",
+#     "ANTHROPIC_API_KEY": "****",
+#     "REPLICATE_API_KEY": "",
+#     "YT_DL_DIR": "/var/data/uploads",
+#     "YT_DL_URL": "https://somehost.com/uploads",
+#     "SCHEDULES": 1
+# }
 
-REPLICATE_API_KEY = configdata.get('REPLICATE_API_KEY', None)
 
-ANTHROPIC_API_KEY = configdata.get('ANTHROPIC_API_KEY', None)
+ALLOWED_USER_NAMES = os.environ.get['ALLOWED_USER_NAMES']
 
-YT_DL_DIR = configdata.get('YT_DL_DIR', None)
-YT_DL_URL = configdata.get('YT_DL_URL', None)
-SCHEDULES = configdata.get('SCHEDULES', None)
+OPENAI_API_KEY = os.environ.get('OPENAI_API_KEY')
+TELEGRAM_TOKEN = os.environ.get['TELEGRAM_TOKEN']
+REPLICATE_API_KEY = os.environ.get('REPLICATE_API_KEY')
+ANTHROPIC_API_KEY = os.environ.get('ANTHROPIC_API_KEY')
+
+YT_DL_DIR = "/var/data/uploads"
+YT_DL_URL = "https://somehost.com/uploads"
+SCHEDULES = 1

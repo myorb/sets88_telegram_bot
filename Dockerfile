@@ -9,3 +9,5 @@ RUN apk add --no-cache ffmpeg \
     && pip install -r requirements.txt
 
 COPY . .
+
+CMD ["python bot.py"]    
