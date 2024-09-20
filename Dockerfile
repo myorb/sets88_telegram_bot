@@ -2,12 +2,10 @@ FROM python:3.10-alpine
 
 WORKDIR /app
 
-COPY requirements.txt requirements.txt
+COPY . .
 
 RUN apk add --no-cache ffmpeg \
     && pip install --upgrade pip \
     && pip install -r requirements.txt
 
-COPY . .
-
-CMD ["python bot.py"]    
+CMD ["python /app/bot.py"]    
